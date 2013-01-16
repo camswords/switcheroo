@@ -31,22 +31,35 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span6">
+        <div class="span8">
           <h2>What's available</h2>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-<p>dfklsdf dslkfjsd flkdsj flksdfj dslkfj sdflksdjf sdlkfj </p>
-          <p><a class="btn" href="/">Back</a></p>
-        </div>
-              
+		  <div class="span4">
+		  	<h4>Projects installed</h4>
+			<p>Helloworld</p>
+			<p>Putterfly</p>
+		  </div>
+		
+		<div class="span3">
+		  	<h4>Upload new Project</h4>
+		  	<div>
+		  		<%= form_for('/available', :method => "post") do %>
+					<p>
+						<%= label_tag(:name, "Project name") %>
+						<%= text_field_tag(:project_name) %>
+					</p>
+					<p>
+						<%= label_tag(:artifact, "Artifact") %>
+						<%= file_field_tag(:project_name) %>
+					</p>
+					<br/>
+          			<p>
+						<%= submit_tag("Create", :class => "btn btn-primary")%>
+						<a class="btn" href="/">Back</a>
+					</p>
+				<% end %>
+		  	</div>
+		  </div>
+        </div>  
       </div>
 
       <hr>
