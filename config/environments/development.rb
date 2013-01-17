@@ -34,4 +34,7 @@ Switcheroo::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # so the rails app knows where to edit the files that the puppet master will use
+  config.puppet_module_path = "puppet_modules"
 end
