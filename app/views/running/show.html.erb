@@ -25,14 +25,21 @@
       </div>
     </div>
 
+
     <div class="container">
       <h1>Switcheroo</h1>
       <hr>
 
+	
 	<div class="row">
         <div class="span6"></div>
         <div class="span6"><h2>What's running</h2></div>
-		<div class="span8">
+		<div class="span12">
+			
+		  <% if flash[:notice] %>
+		  <div class="alert alert-success"><%= flash[:notice] %></div>
+		  <% end %>
+
 		  <div class="span4">
 		  	<h4>Agents are running</h4>
 			<% if @running_programs.empty? %>
