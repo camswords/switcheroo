@@ -34,15 +34,21 @@
         <div class="span12">
           <h2>What's available</h2>
 
+		  <% if flash[:error] %>
+		  <div class="alert alert-error"><%= flash[:error] %></div>
+		  <% end %>
 		  <% if flash[:notice] %>
 		  <div class="alert alert-success"><%= flash[:notice] %></div>
 		  <% end %>
 
 		  <div class="span4">
 		  	<h4>Programs installed</h4>
+			<% if @all_programs.empty? %>
+				<p>There are no programs installed.</p>
+			<% end %>
 			<% @all_programs.each do |program_name| %>
-			<p><a class="btn btn-primary" href="#" 
-				onclick="$('#delete_form').attr('action', $('#delete_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()">delete</a> <%= program_name %></p>			
+				<p><a class="btn btn-primary" href="#" 
+				onclick="$('#delete_form').attr('action', $('#delete_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()">Delete</a> <%= program_name %></p>			
 				<% end %>
 		  </div>
 		

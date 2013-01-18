@@ -47,7 +47,7 @@
 			<% end %>
 			<% @running_programs.each do |program_name| %>
 				<p><a class="btn btn-primary" href="#" 
-					onclick="$('#stop_form').attr('action', $('#stop_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()">stop</a> <%= program_name %></p>
+					onclick="$('#stop_form').attr('action', $('#stop_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()">Stop</a> <%= program_name %></p>
 			<% end %>
 		  </div>
 		
