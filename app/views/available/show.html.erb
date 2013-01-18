@@ -34,13 +34,14 @@
         <div class="span8">
           <h2>What's available</h2>
 		  <div class="span4">
-		  	<h4>Projects installed</h4>
-			<p>Helloworld</p>
-			<p>Putterfly</p>
+		  	<h4>Programs installed</h4>
+			<% @all_programs.each do |program_name| %>
+				<p><%= program_name %></p>
+			<% end %>
 		  </div>
 		
 		<div class="span3">
-		  	<h4>Upload new Project</h4>
+		  	<h4>Upload new Programs</h4>
 		  	<div>
 		  		<%= form_for('/available', :method => "post") do %>
 					<p>

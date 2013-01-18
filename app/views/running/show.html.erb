@@ -39,8 +39,9 @@
 		<div class="span8">
 		  <div class="span4">
 		  	<h4>Agents are running</h4>
-			<p><a class="btn btn-primary" href="#">stop</a> Helloworld</p>
-			<p><a class="btn btn-primary" href="#">stop</a> Putterfly</p>
+			<% @running_programs.each do |program_name| %>
+				<p><a class="btn btn-primary" href="#">stop</a> <%= program_name %></p>
+			<% end %>
 		  </div>
 		
 		  <div class="span3">
@@ -54,7 +55,9 @@
 					    <span class="caret"></span>
 					  </a>
 					  <ul class="dropdown-menu">
-					    <li><a href="#">Program Name</a></li>
+						<% @stopped_programs.each do |program_name| %>
+					    	<li><a href="#"><%= program_name %></a></li>
+						<% end %>
 					  </ul>
 					  <span style="padding-left:4px;"><a href="/" class="btn">Back</a></span>
 					</div>
