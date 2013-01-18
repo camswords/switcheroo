@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'puppet/module/truth'
 
 module Puppet
   module Module
@@ -18,6 +19,8 @@ module Puppet
         FileUtils.rm_rf(program_directory)
         FileUtils.mkdir(program_directory)
         FileUtils.copy(temporary_artifact.path, program_artifact_path)
+        
+        Puppet::Module::Truth.update
       end
     end
   end
