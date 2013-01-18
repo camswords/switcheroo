@@ -30,25 +30,28 @@
       <hr>
 
 	<div class="row">
-        <div class="span6">
-        </div>
-        <div class="span6">
-          <h2>What's running</h2>
-        </div>        
-
+        <div class="span6"></div>
+        <div class="span6"><h2>What's running</h2></div>
 		<div class="span8">
 		  <div class="span4">
 		  	<h4>Agents are running</h4>
+			<% if @running_programs.empty? %>
+				<p>No 	programs are running.</p>
+			<% end %>
 			<% @running_programs.each do |program_name| %>
-				<p><a class="btn btn-primary" href="#">stop</a> <%= program_name %></p>
+				<p><a class="btn btn-primary" href="#" 
+					onclick="$('#stop_form').attr('action', $('#stop_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()">stop</a> <%= program_name %></p>
 			<% end %>
 		  </div>
 		
 		  <div class="span3">
-			
 		  	<h4>Start running</h4>
 		  	<div>
 				<p>	
+					<% if @stopped_programs.empty? %>
+						<p>All programs have been started.</p>
+						<p><span style="padding-left:4px;"><a href="/" class="btn">Back</a></span></p>
+					<% else %>
 					<div class="btn-group">
 					  <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="#">
 					    Program
@@ -56,17 +59,23 @@
 					  </a>
 					  <ul class="dropdown-menu">
 						<% @stopped_programs.each do |program_name| %>
-					    	<li><a href="#"><%= program_name %></a></li>
+					    	<li><a href="javascript:$('#start_form').attr('action', $('#start_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()"><%= program_name %></a></li>
 						<% end %>
 					  </ul>
 					  <span style="padding-left:4px;"><a href="/" class="btn">Back</a></span>
 					</div>
+					<% end %>
 				</p>
 		  	</div>
 		  </div>
         </div>
-        </div>
+      </div>
 
+	  <form action="/program/$PROGRAM/stop" method="POST" id="stop_form" style="display:none;">
+	  </form>
+
+	  <form action="/program/$PROGRAM/start" method="POST" id="start_form" style="display:none;">
+	  </form>
       <hr>
 
     </div> <!-- /container -->

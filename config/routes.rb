@@ -4,8 +4,10 @@ Switcheroo::Application.routes.draw do
   root :to => 'switcheroo#overview'
   
   match '/available' => 'available#show', :via => :get 
-  match '/running' => 'running#show', :via => :get 
+  match '/running' => 'running#show', :via => :get
   
+  match '/program/:program_name/stop' => 'programs#stop', :via => :post
+  match '/program/:program_name/start' => 'programs#start', :via => :post
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
