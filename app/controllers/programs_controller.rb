@@ -18,5 +18,11 @@ class ProgramsController < ActionController::Base
     flash[:notice] = "#{params[:name]} has been uploaded."
     redirect_to "/available"
   end
+  
+  def delete
+    Puppet::Module::JavaProgram.delete(params[:program_name])
+    flash[:notice] = "#{params[:program_name]} has been deleted."
+    redirect_to "/available"
+  end
 
 end

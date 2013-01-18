@@ -41,8 +41,9 @@
 		  <div class="span4">
 		  	<h4>Programs installed</h4>
 			<% @all_programs.each do |program_name| %>
-				<p><%= program_name %></p>
-			<% end %>
+			<p><a class="btn btn-primary" href="#" 
+				onclick="$('#delete_form').attr('action', $('#delete_form').attr('action').replace('$PROGRAM', '<%= program_name %>')).submit()">delete</a> <%= program_name %></p>			
+				<% end %>
 		  </div>
 		
 		<div class="span3">
@@ -69,6 +70,8 @@
       </div>
 
       <hr>
+	  <form action="/program/$PROGRAM/delete" method="POST" id="delete_form" style="display:none;">
+	  </form>
 
     </div> <!-- /container -->
 
