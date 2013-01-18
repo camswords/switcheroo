@@ -31,8 +31,13 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span8">
+        <div class="span12">
           <h2>What's available</h2>
+
+		  <% if flash[:notice] %>
+		  <div class="alert alert-success"><%= flash[:notice] %></div>
+		  <% end %>
+
 		  <div class="span4">
 		  	<h4>Programs installed</h4>
 			<% @all_programs.each do |program_name| %>
@@ -43,14 +48,14 @@
 		<div class="span3">
 		  	<h4>Upload new Programs</h4>
 		  	<div>
-		  		<%= form_for('/available', :method => "post") do %>
+		  		<%= form_tag('/program/new', :method => "post", :multipart => true) do %>
 					<p>
-						<%= label_tag(:name, "Project name") %>
-						<%= text_field_tag(:project_name) %>
+						<%= label_tag(:name, "Name") %>
+						<%= text_field_tag(:name) %>
 					</p>
 					<p>
 						<%= label_tag(:artifact, "Artifact") %>
-						<%= file_field_tag(:project_name) %>
+						<%= file_field_tag(:artifact) %>
 					</p>
 					<br/>
           			<p>

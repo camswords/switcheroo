@@ -8,6 +8,7 @@ Switcheroo::Application.routes.draw do
   
   match '/program/:program_name/stop' => 'programs#stop', :via => :post
   match '/program/:program_name/start' => 'programs#start', :via => :post
+  match '/program/new' => 'programs#new', :via => :post
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
