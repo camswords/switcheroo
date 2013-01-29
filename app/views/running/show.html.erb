@@ -54,8 +54,10 @@
 		  <div class="span3">
 		  	<h4>Start running</h4>
 		  	<div>
-				<p>	
-					<% if @stopped_programs.empty? %>
+				<p>	<% if @all_programs.empty? %>
+					<p>There are no programs installed.</p>
+					<p><span style="padding-left:4px;"><a href="/" class="btn">Back</a></span></p>					
+					<% elsif @stopped_programs.empty? %>
 						<p>All programs have been started.</p>
 						<p><span style="padding-left:4px;"><a href="/" class="btn">Back</a></span></p>
 					<% else %>
