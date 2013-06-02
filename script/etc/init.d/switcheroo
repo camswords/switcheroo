@@ -61,11 +61,6 @@ kill_process_with_recorded_pid() {
 		return 0
 	fi
 	
-	# Kill gracefully
-	if kill_process "$pid" 15;then
-		return 0
-	fi
-	
 	# Screw this, kill it properly.
 	if kill_process "$pid" 9;then
 		return 0
@@ -84,7 +79,7 @@ start)
 
 	rm -rf $PID_FILE
 	cd /opt/switcheroo
-	rails s -e production 2>&1 | tee --append $LOG_FILE &
+	sudo -u switcheroo rails s -e production 2>&1 | tee --append $LOG_FILE &
 	
 	if [ "$?" -ne 0 ];then
 		echo "failed to start $0."
