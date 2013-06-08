@@ -18,8 +18,11 @@ module Puppet
                 
         FileUtils.rm_rf(program_directory)
         FileUtils.mkdir(program_directory)
+        FileUtils.chown('switcheroo', 'puppet', program_directory)
+        FileUtils.chmod(755, program_directory)
+
         FileUtils.copy(temporary_artifact.path, program_artifact_path)
-        FileUtils.chown_R('switcheroo', 'puppet', program_artifact_path)
+        FileUtils.chown('switcheroo', 'puppet', program_artifact_path)
         FileUtils.chmod_R(644, program_artifact_path)
         
         Puppet::Module::Truth.update
