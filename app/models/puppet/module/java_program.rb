@@ -19,17 +19,15 @@ module Puppet
         FileUtils.mkdir(program_directory)
         FileUtils.chown('switcheroo', 'puppet', program_directory)
 
-        # why does the ruby file utils not work on my raspberry pi?
+        # why does the ruby file utils not work on my ubuntu vm?
         `chmod 755 #{program_directory}`
-
 
         FileUtils.copy(temporary_artifact.path, program_artifact_path)
         FileUtils.chown('switcheroo', 'puppet', program_artifact_path)
 
-        # why does the ruby file utils not work on my raspberry pi?
+        # why does the ruby file utils not work on my ubuntu vm?
         `chmod 644 #{program_artifact_path}`
 
-        
         Puppet::Module::Truth.update
       end
       
