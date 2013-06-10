@@ -25,8 +25,12 @@ class ProgramsController < ActionController::Base
   
   def delete
     Puppet::Module::Agent.stop_program(params[:program_name])
-    Puppet::Module::JavaProgram.delete(params[:program_name])
-    flash[:notice] = "#{params[:program_name]} has been deleted."
+    if Puppet::Module::JavaProgram.delete(params[:program_name])
+      flash[:notice] = "#{params[:program_name]} has been deleted."
+    else
+      flash[:error] = "failed to delete #{params[:program_name]}."
+    end
+
     redirect_to "/available"
   end
 

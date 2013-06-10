@@ -11,7 +11,7 @@
 ### END INIT INFO
 
 PID_FILE="/opt/switcheroo/tmp/pids/server.pid"
-LOG_FILE="/var/log/switcheroo/switcheroo.log"
+LOG_FILE="/var/log/switcheroo/production.log"
 
 process_is_alive() {
 	local pid="$1"
@@ -79,7 +79,7 @@ start)
 
 	rm -rf $PID_FILE
 	cd /opt/switcheroo
-	sudo -u switcheroo rails s -e production 2>&1 | tee --append $LOG_FILE &
+	sudo -u switcheroo rails s -e production &>> $LOG_FILE &
 	
 	if [ "$?" -ne 0 ];then
 		echo "failed to start $0."

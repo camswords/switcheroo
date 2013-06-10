@@ -34,6 +34,8 @@ module Puppet
       def self.delete(program_name)
         program_directory = File.join(Rails.configuration.puppet_module_path, "java_program", "files", "opt", program_name)
         FileUtils.rm_rf(program_directory)
+
+        File.exists? program_directory
       end
     end
   end
