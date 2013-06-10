@@ -16,7 +16,7 @@ module Puppet
         program_artifact_path = File.join(program_directory, "#{program_name}#{File.extname(uploaded_name)}")
                 
         FileUtils.rm_rf(program_directory)
-        FileUtils.mkdir(program_directory)
+        FileUtils.mkdir_p(program_directory)
         FileUtils.chown('switcheroo', 'puppet', program_directory)
 
         # why does the ruby file utils not work on my ubuntu vm?
